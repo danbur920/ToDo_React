@@ -1,0 +1,49 @@
+.form-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-frame {
+    width: 100%; /* Ramka na szerokość tabeli */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* Spowoduje to, że padding nie będzie zwiększał szerokości elementu */
+}
+
+.form-item {
+    margin-bottom: 20px;
+}
+
+.form-item label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-select {
+    width: 100%;
+}
+
+.form-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #40a9ff;
+}
+
+.icon {
+    margin-right: 8px;
+}
