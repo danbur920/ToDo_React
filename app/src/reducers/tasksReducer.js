@@ -14,6 +14,7 @@ const tasksReducer = (state = initialState, action) => {
         oneTimeTasks: action.payload.filter(task => task.isDisposable),
       };
     case ADD_TASK:
+      console.log("State before ADD_TASK: ", state); 
       return {
         ...state,
         dailyTasks: action.payload.isDisposable ? state.dailyTasks : [...state.dailyTasks, action.payload],

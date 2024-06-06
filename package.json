@@ -1,14 +1,20 @@
 {
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dompurify": "^3.1.5",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "framer-motion": "^11.2.10",
+    "joi": "^17.13.1",
     "mongoose": "^8.4.0",
     "react-redux": "^9.1.2",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0"
   },
   "devDependencies": {
+    "@types/express-session": "^1.18.0",
     "gh-pages": "^6.1.1",
     "node-sass": "^9.0.0",
     "sass": "^1.77.4",

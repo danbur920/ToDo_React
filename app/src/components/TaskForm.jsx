@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button as AntButton, Input, Select } from 'antd';
 import '../scss/TaskForm.scss'; 
+import loadingPhoto from '../icons/waiting.svg'
+import DOMPurify from 'dompurify';
+import React from 'react';
 
 const { Option } = Select;
 
@@ -10,23 +13,32 @@ export function AddTask({ onAddTask }) {
     const [taskDescription, setTaskDescription] = useState('');
     const [taskCategory, setTaskCategory] = useState('DOM');
     const [completedValue, setCompletedValue] = useState('Niewykonane');
+    const [taskType, setTaskType] = useState('Jednorazowe');
+    const [showLoading, setShowLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
         const newTask = {
-            name: taskName,
-            description: taskDescription,
+            name: DOMPurify.sanitize(taskName),
+            description: DOMPurify.sanitize(taskDescription),
             category: taskCategory,
             completed: completedValue === 'Wykonane',
-            isDisposable: true
+            isDisposable: taskType === 'Jednorazowe'
         };
 
-        onAddTask(newTask);
+        console.log("New Task: ", newTask);
 
-        setTaskName('');
-        setTaskDescription('');
-        setTaskCategory('DOM');
-        setCompletedValue('Niewykonane');
+        setShowLoading(true); 
+
+        setTimeout(() => {
+            onAddTask(newTask);
+            setShowLoading(false); 
+            setTaskName('');
+            setTaskDescription('');
+            setTaskCategory('DOM');
+            setCompletedValue('Niewykonane');
+            setTaskType('Jednorazowe');
+        }, 1000); 
     };
 
     return (
@@ -56,6 +68,17 @@ export function AddTask({ onAddTask }) {
                             <Option value="Niewykonane">Niewykonane</Option>
                         </Select>
                     </div>
+                    
+                    <div className='form-item'>
+                        <label>Typ zadania:</label>
+                        <Select value={taskType} onChange={(value) => setTaskType(value)} className="form-select">
+                            <Option value="Jednorazowe">Jednorazowe</Option>
+                            <Option value="Dzienne">Dzienne</Option>
+                        </Select>
+                    </div>
+
+                    
+                    
                     <motion.button 
                         type="primary" 
                         htmlType="submit" 
@@ -66,6 +89,8 @@ export function AddTask({ onAddTask }) {
                     >
                         Dodaj zadanie
                     </motion.button>
+
+                    {showLoading && <img src={loadingPhoto} alt="Loading" className="loading-icon" />} 
                 </form>
             </div>
         </div>

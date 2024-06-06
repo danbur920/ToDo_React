@@ -171,7 +171,7 @@ tr:hover {
 
 .form-container form {
   width: 100%;
-  max-width: 400px; /* Ustaw maksymalną szerokość formularza */
+  max-width: 400px; 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -192,8 +192,8 @@ tr:hover {
 }
 
 .form-container button {
-  width: auto; /* Zmienia szerokość na auto */
-  padding: 10px 20px; /* Dodaje wewnętrzne marginesy */
+  width: auto; 
+  padding: 10px 20px; 
   background-color: #007bff;
   color: white;
   border: none;

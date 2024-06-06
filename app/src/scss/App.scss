@@ -6,10 +6,7 @@ body {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -18,49 +15,50 @@ body {
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #0b40aa;
+  height: 150px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center; /* Zmiana na center aby przyciski były na środku */
+  padding: 0 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-      transform: rotate(0deg);
-  }
-  to {
-      transform: rotate(360deg);
-  }
+
+h1 {
+  margin: 0;
+  color: white; 
 }
 
 .app-container {
-  display: flex;
-  justify-content: center;
+  display: flex; 
+  justify-content: space-between; 
 }
 
 .left-list, .right-list {
-  margin: 0 20px;
+  flex: 1; 
+  margin-right: 20px; 
 }
 
+
 .left-list {
-  border-right: 0px solid #ccc;
+  border-right: 1px solid #ccc; 
+  margin-left: 20px
 }
 
 .right-list {
-  border-left: 0px solid #ccc;
+  border-left: 1px solid #ccc; 
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
+  width: 50%;
+  border-collapse:collapse;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -99,9 +97,10 @@ tr:hover {
 .styled-button {
   background-color: #67aada;
   color: white;
-  border: none;
+  border: 3px;
   padding: 8px 16px;
   border-radius: 4px;
+  margin-left: 20px;
   cursor: pointer;
 }
 
@@ -122,7 +121,7 @@ tr:hover {
 
 .form-container form {
   width: 100%;
-  max-width: 400px; /* Ustaw maksymalną szerokość formularza */
+  max-width: 400px; 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -143,8 +142,8 @@ tr:hover {
 }
 
 .form-container button {
-  width: auto; /* Zmienia szerokość na auto */
-  padding: 10px 20px; /* Dodaje wewnętrzne marginesy */
+  width: auto;
+  padding: 10px 20px; 
   background-color: #007bff;
   color: white;
   border: none;
@@ -154,4 +153,30 @@ tr:hover {
 
 .form-container button:hover {
   background-color: #0056b3;
+}
+
+
+.working-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.App-logo {
+  height: 400px; 
+}
+
+.nav-links-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  margin-left: 10px;
+}
+
+.table-container {
+  margin: 0 20px; 
 }

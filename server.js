@@ -1,18 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const Joi = require('joi');
+// const csurf = require('csurf');
+// const cookieParser = require('cookie-parser');
+
 
 const app = express();
-const port = 8080;  
+const port = 8080;
 
 app.use(express.json());
 app.use(cors());
 
-// Połączenie z MongoDB
 mongoose.connect('mongodb://localhost:27017/todoapp', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
+// const csrfProtection = csurf({ cookie: true });
+// app.use(cookieParser());
+// app.use(csrfProtection);
 
 const todoSchema = new mongoose.Schema({
   name: String,
@@ -24,13 +31,33 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model('Todo', todoSchema);
 
+const todoValidationSchema = Joi.object({
+  name: Joi.string().min(1).max(100).required(),
+  description: Joi.string().min(1).max(500).required(),
+  category: Joi.string().valid('DOM', 'PRACA', 'CZAS WOLNY').required(),
+  completed: Joi.boolean().required(),
+  isDisposable: Joi.boolean().required()
+});
+
 app.get('/api/todos', async (req, res) => {
   const todos = await Todo.find();
   res.json(todos);
 });
 
 app.post('/api/todos', async (req, res) => {
-  const todo = new Todo(req.body);
+  const { error } = todoValidationSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  }
+
+  const todo = new Todo({
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    completed: req.body.completed,
+    isDisposable: req.body.isDisposable
+  });
+
   await todo.save();
   res.status(201).json(todo);
 });

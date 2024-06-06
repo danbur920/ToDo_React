@@ -14,7 +14,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './data/store';
-import App from './App'; // your main App component
+import App from './App';
+import './scss/index.scss';
+import './scss/App.scss'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

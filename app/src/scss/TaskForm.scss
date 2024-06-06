@@ -5,20 +5,24 @@
 }
 
 .form-frame {
-    width: 100%; /* Ramka na szerokość tabeli */
+    width: 80%;
+    max-width: 440px; 
+    margin-left: 40%;
+    text-align: center;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box; /* Spowoduje to, że padding nie będzie zwiększał szerokości elementu */
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
 }
 
 .form-item {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    display:contents
 }
 
 .form-item label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .form-select {
@@ -47,3 +51,18 @@
 .icon {
     margin-right: 8px;
 }
+
+.loading-icon {
+    animation: spin 1s linear infinite; 
+    width: 40px; 
+    margin-top: 10px;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg); 
+    }
+  }
